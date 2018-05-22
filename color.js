@@ -5,18 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentColor = 'white';
   let paletteColors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', '#A66829', 'gray', 'black', 'white'];
   let brush_color = document.getElementById('brush_color');
+  let customColor = document.getElementById('color_picker');
 
   // this creates the div squares in the canvas
   function generateRow() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 4000; i++) {
       let canvasBox = document.createElement('div');
       canvasBox.classList.add('canvas-box');
       canvas.append(canvasBox);
     }
   };
-  for (let i = 0; i < 10; i++) {
-    generateRow(i);
-  }
+    generateRow();
 
   // this creates the palette color divs
   for (let i = 0; i < paletteColors.length; i++) {
@@ -31,6 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     currentColor = event.target.style.backgroundColor;
   });
 
+// this allows user to click on custom color box and select a color as well as changed current color box
+  customColor.addEventListener('change', function(event) {
+    event.preventDefault;
+    currentColor = event.target.value;
+    brush_color.style.backgroundColor = event.target.value;
+  });
+
   // this allows user to add a color to the squares
   // canvas.addEventListener('click', function(event) {
   //   event.target.style.backgroundColor = currentColor;
@@ -41,28 +47,29 @@ document.addEventListener('DOMContentLoaded', function() {
     brush_color.style.backgroundColor = event.target.style.backgroundColor;
   });
 
-document.getElementById('canvas').addEventListener('mousedown', startBrushStroke);
+  document.getElementById('canvas').addEventListener('mousedown', startBrushStroke);
 
-function startBrushStroke(){
-  event.preventDefault();
-  colorCell(event);
-  document.getElementById('canvas').addEventListener('mouseover', drawBrushStroke);
-  document.getElementById('canvas').addEventListener('mouseup', releaseBrushStroke);
-}
+  function startBrushStroke() {
+    event.preventDefault();
+    colorCell(event);
+    document.getElementById('canvas').addEventListener('mouseover', drawBrushStroke);
+    document.getElementById('myBody').addEventListener('mouseup', releaseBrushStroke);
+  }
 
-function drawBrushStroke(){
-  event.preventDefault();
-  colorCell(event);
-}
+  function drawBrushStroke() {
+    event.preventDefault();
+    colorCell(event);
+  }
 
-function releaseBrushStroke(){
-  event.preventDefault();
-  document.getElementById('canvas').removeEventListener('mouseover', drawBrushStroke);
-}
+  function releaseBrushStroke() {
+    event.preventDefault();
+    document.getElementById('canvas').removeEventListener('mouseover', drawBrushStroke);
+  }
 
-function colorCell(event){
-  event.target.style.backgroundColor = currentColor;
-  event.target.style.borderColor = currentColor;
-}
+  function colorCell(event) {
+    event.target.style.backgroundColor = currentColor;
+    event.target.style.borderColor = currentColor;
+  }
+
 
 });

@@ -1,3 +1,8 @@
+/* .myBody{
+  display: flex;
+  height: 100%;
+} */
+
 .canvas-container {
   display: flex;
   flex-direction: row;
@@ -9,8 +14,8 @@
 }
 
 .canvas-box {
-  padding-bottom: 2%;
-  width: 2%;
+  padding-bottom: 1%;
+  width: 1%;
   border: 0.02px solid rgba(211,211,211,5);
   box-sizing: border-box;
 }
