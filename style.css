@@ -25,8 +25,9 @@
 .palette_area{
   display: flex;
   justify-content: center;
-  margin: 20px;
   align-items: center;
+  margin: 10px;
+  border: 1px solid black;
 }
 
 .palette {
@@ -34,7 +35,15 @@
   height: 50px;
   border-radius: 100%;
   border: 0.5px solid black;
+  margin: 2px;
   /* background-color: yellow; */
+}
+
+.brush_color_container{
+  display: flex;
+  width: 150px;
+  flex-direction: row;
+  align-items: center;
 }
 
 #brush_color{
