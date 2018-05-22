@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let canvas = document.getElementById('canvas');
   let fillColor = document.getElementById('colors_container');
-  let currentColor = 'red';
-  let paletteColors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'gray', 'black', 'white'];
+  let currentColor = 'white';
+  let paletteColors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', '#A66829', 'gray', 'black', 'white'];
   let brush_color = document.getElementById('brush_color');
 
   // this creates the div squares in the canvas
@@ -32,14 +32,37 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // this allows user to add a color to the squares
-  canvas.addEventListener('click', function(event) {
-    event.target.style.backgroundColor = currentColor;
-  });
+  // canvas.addEventListener('click', function(event) {
+  //   event.target.style.backgroundColor = currentColor;
+  // });
 
   // this shows the selected color in the current color palette circle
   let currentPaletteColor = document.getElementById('colors_container').addEventListener('click', function(event) {
     brush_color.style.backgroundColor = event.target.style.backgroundColor;
   });
 
+document.getElementById('canvas').addEventListener('mousedown', startBrushStroke);
+
+function startBrushStroke(){
+  event.preventDefault();
+  colorCell(event);
+  document.getElementById('canvas').addEventListener('mouseover', drawBrushStroke);
+  document.getElementById('canvas').addEventListener('mouseup', releaseBrushStroke);
+}
+
+function drawBrushStroke(){
+  event.preventDefault();
+  colorCell(event);
+}
+
+function releaseBrushStroke(){
+  event.preventDefault();
+  document.getElementById('canvas').removeEventListener('mouseover', drawBrushStroke);
+}
+
+function colorCell(event){
+  event.target.style.backgroundColor = currentColor;
+  event.target.style.borderColor = currentColor;
+}
 
 });

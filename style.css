@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.color_picker_container{
+  margin: 10px;
+}
+
 .colors_container{
   display: flex;
   justify-content: center;
@@ -26,7 +30,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   border: 1px solid black;
 }
 

@@ -8,8 +8,15 @@
 </head>
 
 <body>
-  <div id="canvas" class="canvas-container">
-  </div>
+  <section id="canvas" class="canvas-container">
+  </section>
+
+  <section id="color_picker_container" class="color_picker_container">
+    <header>
+      <label for="color_picker">Choose a custom color</label>
+      <input id="color_picker" type="color" name="color_picker">
+    </header>
+  </section>
 
   <section id="palette_area" class="palette_area">
     <div id="brush_color_container" class="brush_color_container">
@@ -17,7 +24,6 @@
       <div id="brush_color" class="palette">
       </div>
     </div>
-
     <div id="colors_container" class="colors_container">
     </div>
   </section>
